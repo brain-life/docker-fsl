@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 MAINTAINER Soichi Hayashi <hayashis@iu.edu>
 
+#install deps
 RUN apt-get update && apt-get install -y wget jq vim
 
 #install neurodebian
@@ -8,7 +9,7 @@ RUN wget -O- http://neuro.debian.net/lists/xenial.us-tn.full | tee /etc/apt/sour
 RUN apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
 
 #install fsl
-RUN apt-get update && apt-get install -y fsl
+RUN apt-get update && apt-get install -y fsl python-numpy
 
 ENV FSLDIR=/usr/share/fsl/5.0
 ENV PATH=$PATH:$FSLDIR/bin
